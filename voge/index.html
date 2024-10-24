@@ -1,0 +1,818 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="icon" href="favicon.png">
+	<title></title>
+	<script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+	<link href="./css/jquery.fancybox.min.css" rel="stylesheet">
+	<link href="./css/index.css?v=<?php echo $v;?>" rel="stylesheet">
+
+</head>
+<body>
+
+	<header class="header">
+		<div class="container header__container">
+			<div class="header__content">
+				<div class="header__logo-block">
+					<div class="header__logo header__logo1">
+						<img src="./img/header/header_logo.svg" alt="logo">
+					</div>
+				</div>	
+				<div class="header__contacts-wrapper">
+					<div class="header__contacts">
+						<a class="header__phone" href="tel:+70000000000">+7 (000) 000-00-00</a>
+						<div class="header__addr">
+							Адрес
+						</div>
+					</div>
+					<div class="header__contacts">
+						<a class="header__phone" href="tel:+70000000000">+7 (000) 000-00-00</a>
+						<div class="header__addr">
+							Адрес
+						</div>
+					</div>
+				</div>			
+				<a class="popup btn header__btn" href="#form_popup" data-title="Заказать звонок">
+					<span>Заказать звонок</span>
+				</a>
+				<div class="mob-menu-btn">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</div>
+		<div class="container header__container">
+			<div class="header__menu">
+				<a class="anchor header__menu-item" href="#models" data-type="moto"><span>Мотоциклы</span></a>
+				<a class="anchor header__menu-item" href="#models" data-type="atv"><span>Квадроциклы</span></a>
+				<a class="anchor header__menu-item" href="#models" data-type="scooter"><span>Скутеры</span></a>
+				<a class="anchor header__menu-item" href="#credit" data-type=""><span>Кредит</span></a>
+				<a class="anchor header__menu-item" href="#tradein" data-type=""><span>Трейд-ин</span></a>
+				<a class="anchor header__menu-item" href="#service" data-type=""><span>Сервис</span></a>
+				<a class="anchor header__menu-item" href="#contacts" data-type=""><span>Контакты</span></a>
+			</div>
+		</div>
+	</header>
+
+	<script>
+		$(function() {
+
+			// choose header addr
+
+			$(".addr-list__first-item").click(function() {
+				$(".addr-list__items").toggleClass("addr-list__items_open");
+				$(this).toggleClass("addr-list__first-item_open");
+			});
+
+			let headerPhone = $(".header__phone").html();
+
+			$(".addr-list__item").click(function(){
+				let phone = $(this).data("tel");
+				let val = $(this).data("val");
+				let dealer = $(this).html();
+
+				if (val == "") phone = headerPhone;
+
+				phoneMod = "tel:+"+phone.replace(/\D/ig, "");
+
+				$(".addr-list__first-item").html(dealer);
+				$(".header__phone").html(phone);
+				$(".header__phone").attr("href", phoneMod);
+				$(".addr-list__items").removeClass("addr-list__items_open");
+				$(".addr-list__first-item").removeClass("addr-list__first-item_open");
+			});
+
+			$(document).click(function(event) {
+				if (!$(event.target).hasClass("addr-list__first-item")) {
+					$(".addr-list__items").removeClass("addr-list__items_open");
+					$(".addr-list__first-item").removeClass("addr-list__first-item_open");
+				}
+			});
+			
+		});
+	</script>
+
+	<section class="banner">
+		<div class="banner__anim-block">
+			<div class="banner__anim-image-wrapper">
+				<div class="banner__bg-image-block">
+					<picture class="banner__bg-image">
+						<img src="img/banner/banner_z0.jpg" alt="">
+					</picture>
+				</div>
+				<div class="banner__anim-image-block">
+					<picture class="banner__anim-image">
+						<img src="./img/banner/banner_z1.jpg" alt="">
+					</picture>
+					<picture class="banner__anim-image">
+						<img src="./img/banner/banner_z1.jpg" alt="">
+					</picture>
+				</div>
+			</div>
+		</div>
+		<div class="container banner__container">
+			<div class="banner__content">
+				<div class="banner__title-block">
+					<div class="banner__title banner__title_sm1">Только до 30 ноября!</div>
+					<div class="banner__title banner__title_big1 text_yellow">ЭКСКЛЮЗИВНЫЕ УСЛОВИЯ</div>
+					<div class="banner__title">
+						на покупку мотициклов <span class="text_yellow">VOGE в Автодом</span>
+					</div>
+					<a class="popup btn banner__btn" href="#form_popup" data-title="Узнать подробности">
+						<span>Узнать подробности</span>
+					</a>
+				</div>
+				<div class="banner__image-block">
+					<picture class="banner__anim-image">
+						<img src="./img/banner/banner_z3.png" alt="">
+					</picture>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		$(function() {
+			setTimeout(() => {
+				$(".banner__anim-image-block").addClass("banner__anim-image-block_transform");			
+				$(".models-tabs__item-img-block").addClass("models-tabs__item-img-block_transform");			
+			}, 1000);
+		});
+	</script>
+
+	<section class="timer">
+		<div class="container timer__container">
+			<div class="timer__content">
+				<div class="timer__block">
+					<script src="//megatimer.ru/get/fc73e90f54d4bc9017402e4cd5f9e4fb.js"></script>
+				</div>
+				<div class="timer__info">
+					<div class="timer__title">Успейте получить<br> выгодное предложение!</div>
+					<form action="mail.php" method="POST" class="all_forms timer__form form_white">
+						<input type="text" name="checkpass" value="" style="position: absolute; left: -9999px; display: none;">
+						<input name="title"   				type="hidden" value="Успейте получить выгодное предложение!">
+						
+						<div class="form-group-wrapper">
+							<div class="form-group">
+								<input type="tel" name="phone" inputmode="numeric" class="nacc form-control" placeholder="Введите телефон" autocomplete="off">
+							</div>
+							<div class="form-group">
+								<button type="submit" class="form-control btn"><span>Заказать звонок</span></button>
+							</div>
+						</div>
+						<label class="agree_field">
+							<input type="checkbox" name="agree" value="1" checked="checked">
+							<span class="input-style"></span>
+							Даю согласие на <a target="_blank" href="">обработку персональных данных</a>
+						</label>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="models" id="models">
+		<div class="models-tabs">
+			<div class="container models__container">
+				<div class="models-tabs__content">
+					<div class="models-tabs__item" data-type="moto">
+						<span class="models-tabs__item-img-block">
+							<picture class="models-tabs__image">
+								<img loading="lazy" class="lazyload" data-src="./img/models/tabs/tabs_img1.png" alt="">
+							</picture>
+						</span>
+						<span class="models-tabs__item-text">Мотоциклы</span>
+					</div>
+					<div class="models-tabs__item" data-type="atv">
+						<span class="models-tabs__item-img-block">
+							<picture class="models-tabs__image">
+								<img loading="lazy" class="lazyload" data-src="./img/models/tabs/tabs_img2.png" alt="">
+							</picture>
+						</span>
+						<span class="models-tabs__item-text">Квадроциклы</span>
+					</div>
+					<div class="models-tabs__item" data-type="scooter">
+						<span class="models-tabs__item-img-block">
+							<picture class="models-tabs__image">
+								<img loading="lazy" class="lazyload" data-src="./img/models/tabs/tabs_img3.png" alt="">
+							</picture>
+						</span>
+						<span class="models-tabs__item-text">Скутеры</span>
+					</div>
+				</div>					
+			</div>
+		</div>
+		<div class="models-items">
+			<div class="container models-items__container">
+				<div class="models-items__content">
+
+				
+
+					<div class="models-items__type" type="moto">
+						
+						<div class="models-items__item" id="300ac">
+							<div class="models-items__name">300 <b>AC</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/300ac/1.jpg" alt="">
+									</picture>
+									<picture class="models-items__image">
+										<img src="./img/models/moto/300ac/2.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="300ds">
+							<div class="models-items__name">300 <b>DS</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/300ds/1.jpg" alt="">
+									</picture>
+									<picture class="models-items__image">
+										<img src="./img/models/moto/300ds/2.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="300r">
+							<div class="models-items__name">300 <b>R</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/300r/1.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="300rally">
+							<div class="models-items__name">300 <b>Rally</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/300rally/1.jpg" alt="">
+									</picture>
+									<picture class="models-items__image">
+										<img src="./img/models/moto/300rally/2.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="300rr">
+							<div class="models-items__name">300 <b>RR</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/300rr/1.jpg" alt="">
+									</picture>
+									<picture class="models-items__image">
+										<img src="./img/models/moto/300rr/2.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="350ac">
+							<div class="models-items__name">350 <b>AC</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/350ac/1.jpg" alt="">
+									</picture>
+									<picture class="models-items__image">
+										<img src="./img/models/moto/350ac/2.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="650dsx">
+							<div class="models-items__name">650 <b>DSX</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/650dsx/1.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="ac525">
+							<div class="models-items__name"><b>AC</b> 525</div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/ac525/1.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="ac525x">
+							<div class="models-items__name"><b>AC</b> 525 <b>X</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/ac525x/1.jpg" alt="">
+									</picture>
+									<picture class="models-items__image">
+										<img src="./img/models/moto/ac525x/2.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="cu525">
+							<div class="models-items__name"><b>CU</b> 525</div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/cu525/1.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="ds525x">
+							<div class="models-items__name"><b>DS</b> 525 <b>X</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/ds525x/1.jpg" alt="">
+									</picture>
+									<picture class="models-items__image">
+										<img src="./img/models/moto/ds525x/2.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="r525">
+							<div class="models-items__name"><b>R</b> 525</div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/moto/r525/1.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+
+					</div>
+
+
+					<div class="models-items__type" type="atv">
+
+						<div class="models-items__item" id="xwolf_200">
+							<div class="models-items__name">XWOLF <b>200</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/atv/xwolf_200/1.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="xwolf_300">
+							<div class="models-items__name">XWOLF <b>300</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">
+										<img src="./img/models/atv/xwolf_300/1.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="xwolf_300_max">
+							<div class="models-items__name">XWOLF <b>300 MAX</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">alt="">
+										<img src="./img/models/atv/xwolf_300_max/1.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="xwolf_700i_eps">
+							<div class="models-items__name">XWOLF <b>700i EPS</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">alt="">
+										<img src="./img/models/atv/xwolf_700i_eps/1.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+						<div class="models-items__item" id="xwolf_700i_max_eps">
+							<div class="models-items__name">XWOLF <b>700i MAX EPS</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">>" alt="">
+										<img src="./img/models/atv/xwolf_700i_max_eps/1.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="models-items__type" type="scooter">
+						
+						<div class="models-items__item" id="voge_sr4_max">
+							<div class="models-items__name">VOGE <b>SR4 MAX</b></div>
+							<div class="models-items__image-block">
+									<picture class="models-items__image">alt="">
+										<img src="./img/models/scooter/voge_sr4_max/1.jpg" alt="">
+									</picture>
+									<picture class="models-items__image">alt="">
+										<img src="./img/models/scooter/voge_sr4_max/2.jpg" alt="">
+									</picture>
+							</div>
+							<div class="models-items__btns">
+								<a class="popup btn btn_glass models-items__btn" href="#form_popup" data-title="Рассчитать кредит">
+									<span>Рассчитать кредит</span>
+								</a>
+								<a class="popup btn btn_black models-items__btn" href="#form_popup" data-title="Получить предложение">
+									<span>Получить предложение</span>
+								</a>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		$(function() {
+			function initSlick() {
+				$(".models-items__image-block").slick({
+					infinite: true,
+					dots: true,
+					arrows: false
+				});			
+			}
+
+			initSlick();
+
+			// models tabs
+
+			$(".models-tabs__item").click(function() {
+				$(".models-items__image-block").slick("unslick");
+				$(".models-tabs__item").removeClass("models-tabs__item_active");
+				$(this).addClass("models-tabs__item_active");
+
+				let type = $(this).data("type");
+
+				$(".models-items__type").hide();
+				$(".models-items__type[type='"+type+"']").show();
+				initSlick();
+			});
+
+			$(".models-tabs__item:eq(0)").click();
+		});
+	</script>
+	
+	<section class="credit" id="credit">
+		<div class="container credit__container">
+			<div class="credit__content">
+				<div class="credit__info">
+					<div class="credit__title title title_arrow">кредит</div>
+					<div class="credit__desc desc">Рассчитайте индивидуальные условия по кредиту</div>
+				</div>
+				<form action="mail.php" method="POST" class="all_forms credit__form form_black">
+					<input type="text" name="checkpass" value="" style="position: absolute; left: -9999px; display: none;">
+					<input name="title"   				type="hidden" value="кредит">
+					
+					<div class="form-group-wrapper">
+						<div class="form-group">
+							<input type="tel" name="phone" inputmode="numeric" class="input_black nacc form-control" placeholder="Введите телефон" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="form-control btn btn_black"><span>Рассчитать кредит</span></button>
+						</div>
+					</div>
+					<label class="agree_field">
+						<input type="checkbox" name="agree" value="1" checked="checked">
+						<span class="input-style"></span>
+						Даю согласие на <a target="_blank" href="">обработку персональных данных</a>
+					</label>
+				</form>
+			</div>
+		</div>
+	</section>	
+
+	<section class="tradein" id="tradein">
+		<div class="container tradein__container">
+			<div class="tradein__content">
+				<div class="tradein__info">
+					<div class="tradein__title title title_arrow">ТРЕЙД-ИН</div>
+					<div class="tradein__desc desc">Обменяйте свой старый мотоцикл или квадроцикл на новый VOGE</div>
+				</div>
+				<form action="mail.php" method="POST" class="all_forms tradein__form form_black">
+					<input type="text" name="checkpass" value="" style="position: absolute; left: -9999px; display: none;">
+					<input name="title"   				type="hidden" value="ТРЕЙД-ИН">
+					
+					<div class="form-group-wrapper">
+						<div class="form-group">
+							<input type="tel" name="phone" inputmode="numeric" class="input_black nacc form-control" placeholder="Введите телефон" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="form-control btn btn_black"><span>Получить расчет</span></button>
+						</div>
+					</div>
+					<label class="agree_field">
+						<input type="checkbox" name="agree" value="1" checked="checked">
+						<span class="input-style"></span>
+						Даю согласие на <a target="_blank" href="">обработку персональных данных</a>
+					</label>
+				</form>
+			</div>
+		</div>
+	</section>	
+
+	<section class="service" id="service">
+		<div class="container service__container">
+			<div class="service__content">
+				<div class="service__info">
+					<div class="service__title title title_arrow">сервис</div>
+					<div class="service__desc desc">Наша компания предоставляет владельцам мотоциклов VOGE все необходимые услуги в области диагностики, ремонта и сервисного обслуживания</div>
+				</div>
+				<form action="mail.php" method="POST" class="all_forms service__form form_black">
+					<input type="text" name="checkpass" value="" style="position: absolute; left: -9999px; display: none;">
+					<input name="title"   				type="hidden" value="сервис">
+					
+					<div class="form-group-wrapper">
+						<div class="form-group">
+							<input type="tel" name="phone" inputmode="numeric" class="input_black nacc form-control" placeholder="Введите телефон" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="form-control btn btn_black"><span>Записаться на сервис</span></button>
+						</div>
+					</div>
+					<label class="agree_field">
+						<input type="checkbox" name="agree" value="1" checked="checked">
+						<span class="input-style"></span>
+						Даю согласие на <a target="_blank" href="">обработку персональных данных</a>
+					</label>
+				</form>
+			</div>
+		</div>
+	</section>	
+
+	<section class="best-offer" id="best-offer">
+		<div class="container best-offer__container">
+			<div class="best-offer__content">
+				<div class="best-offer__title title title_white">УЖЕ ЕСТЬ ПРЕДЛОЖЕНИЕ?</div>
+				<div class="best-offer__info">
+					<div class="best-offer__desc desc desc_white">У вас уже есть предложение от другого дилера? Оставьте заявку, мы сделаем лучше!</div>
+				</div>
+				<form action="mail.php" method="POST" class="all_forms best-offer__form form_white">
+					<input type="text" name="checkpass" value="" style="position: absolute; left: -9999px; display: none;">
+					<input name="title"   				type="hidden" value="УЖЕ ЕСТЬ ПРЕДЛОЖЕНИЕ?">
+					
+					<div class="form-group-wrapper">
+						<div class="form-group">
+							<input type="tel" name="phone" inputmode="numeric" class="nacc form-control" placeholder="Введите телефон" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="form-control btn"><span>Заказать звонок</span></button>
+						</div>
+					</div>
+					<label class="agree_field">
+						<input type="checkbox" name="agree" value="1" checked="checked">
+						<span class="input-style"></span>
+						Даю согласие на <a target="_blank" href="">обработку персональных данных</a>
+					</label>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<section class="contacts" id="contacts">
+		<div class="container contacts__container">
+			<div class="contacts__content">
+				<div class="contacts__title title">Контакты</div>
+				<div class="contacts__logo-block">
+					<div class="contacts__logo contacts__logo1">
+						<img loading="lazy" class="lazyload" data-src="./img/contacts/contacts_logo.svg" alt="logo">
+					</div>
+					<div class="contacts__logo-text">
+						<div class="contacts__logo-text_big">VOGE</div>
+					</div>
+				</div>
+				<div class="contacts__info">
+					<a href="tel:00000000000" class="contacts__phone">00000000000</a>
+					<div class="contacts__openhours">00:00 — 00:00 ежедневно</div>
+				</div>
+				<a class="popup btn contacts__btn btn_black" href="#form_popup" data-title="Заказать звонок">
+					<span>Заказать звонок</span>
+				</a>
+				<div class="contacts__addr-block">
+					<div class="contacts__addr-item contacts__addr-item_active" data-addr="1">
+						<div class="contacts__addr-name">адрес</div>
+						<div class="contacts__addr">адрес</div>
+					</div>
+					<div class="contacts__addr-item" data-addr="2">
+						<div class="contacts__addr-name">адрес</div>
+						<div class="contacts__addr">адрес</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="map1"></div>
+	</section>
+
+	<footer class="footer">
+		<div class="container footer__container">
+			<script>
+				$(function(){
+					$('.footer__disclamer-switch').click(function(){
+						$('.footer__disclamer').slideToggle({
+							start: function(){
+								$("html, body").animate({scrollTop: $("html, body").height()},"slow");
+							}
+						});
+						return false;
+					});
+				});
+			</script>
+
+			<div class="footer__info-wrapper">
+				<div class="footer__disclamer-switch-bg">
+					<a class="footer__disclamer-switch" href="#">Условия акций</a>
+				</div>
+				<div class="footer__policy-info">
+					<a class="footer__policy-link" href="#">Правовая информация</a>
+				</div>
+			</div>
+
+			<div class="footer__disclamer">
+				<p>text</p>
+			</div>
+		</div>
+	</footer>
+
+			
+	<div id="form_popup">
+		<form action="mail.php" method="POST" class="all_forms popup_container form_black">
+			<input type="text" name="checkpass" value="" style="position: absolute; left: -9999px; display: none;">
+			
+			<h2 class="form_title">Заголовок</h2>
+			<div class="form-group">
+				<input type="tel" name="phone" inputmode="numeric" class="nacc form-control" placeholder="Введите телефон" autocomplete="off">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="form-control btn btn_black" autofocus><span>Получить предложение</span></button>
+			</div>
+			<label class="agree_field">
+				<input type="checkbox" name="agree" value="1" checked="checked">
+				<span class="input-style"></span>
+				Даю согласие на <a target="_blank" href="">обработку персональных данных</a>
+			</label>
+		</form>
+	</div>
+	
+	<link href="./css/fonts.css" rel="stylesheet">
+
+	<!-- fancy -->
+	<script type="text/javascript" src="./js/jquery.fancybox.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.inputmask.bundle.min.js"></script>
+
+	<!-- slick -->
+	<link rel="stylesheet" type="text/css" href="./slick/slick.css"/>
+	<script type="text/javascript" src="./slick/slick.min.js"></script>
+
+	<script type="text/javascript" src="./js/index.js?v=<?php echo $v;?>"></script>
+
+	<script>
+		$(function() {			
+			if ('loading' in HTMLImageElement.prototype) {
+				
+				const images = document.querySelectorAll('img[loading="lazy"]');			
+				images.forEach(img => {
+					img.src = img.dataset.src;
+				});
+
+				const sources = document.querySelectorAll('source[loading="lazy"]');
+				sources.forEach(source => {
+					source.srcset = source.dataset.srcset;
+				});
+
+			} else {
+				// Dynamically import the LazySizes library
+				const script = document.createElement('script');
+				script.src =
+					'./js/lazysizes.min.js';
+				document.body.appendChild(script);
+			}
+		});
+	</script>
+
+</body>
+</html>
