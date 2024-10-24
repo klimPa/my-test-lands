@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="favicon.png">
+    <title></title>
+    <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+    <link href="./css/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="./css/index.css" rel="stylesheet">
+
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header">
+            <div class="logo_wrap">
+                <div class="logo">
+                    <img loading="lazy" class="lazyload" data-src="./img/logo_gac.png" alt="logo">
+                </div>
+            </div>
+            <div class="header_addr">
+                <b>Адрес</b><br> адрес
+            </div>
+            <a href="tel:+70000000000" class="header_phone"><b>+7000000000</b></a>
+            <a class="popup btn" href="#form_popup" data-title="Заказать звонок">
+                <span>Заказать звонок</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+
+<!-- dynamic blocks -->
+
+<script>
+    $(function () {
+
+        // cars info
+
+        let carsInfoArr = [
+            {
+                "brand": "GAC",
+                "model": "GS5",
+                "kpp": {
+                    "akpp": "Автоматическая",
+                    "mkpp": "Механическая"
+                },
+                "color": {
+                    "1": {
+                        "colorName": "Серебристый",
+                        "colorCode": "#9f9f9f,#fefefe"
+                    },
+                    "2": {
+                        "colorName": "Белый",
+                        "colorCode": "#b3b3b3,#ffffff"
+                    },
+                    "3": {
+                        "colorName": "Серый",
+                        "colorCode": "#454646,#fefefe"
+                    },
+                    "4": {
+                        "colorName": "Коричневый",
+                        "colorCode": "#3a2b1b,#ad8f7a"
+                    },
+                    "5": {
+                        "colorName": "Черный",
+                        "colorCode": "#232424,#818182"
+                    },
+                    "6": {
+                        "colorName": "Синий",
+                        "colorCode": "#0152a7,#20a5f0"
+                    },
+                },
+                "instock": "3",
+                "tradein": "0000",
+                "leasing": "00000",
+                "price": "000000"
+            },
+            {
+                "brand": "GAC",
+                "model": "GS8 II",
+                "kpp": {
+                    "akpp": "Автоматическая"
+                },
+                "color": {
+                    "1": {
+                        "colorName": "Серебристый",
+                        "colorCode": "#9f9f9f,#fefefe"
+                    },
+                    "2": {
+                        "colorName": "Белый",
+                        "colorCode": "#b3b3b3,#ffffff"
+                    },
+                    "3": {
+                        "colorName": "Серый",
+                        "colorCode": "#454646,#fefefe"
+                    },
+                    "4": {
+                        "colorName": "Черный",
+                        "colorCode": "#232424,#818182"
+                    },
+                    "5": {
+                        "colorName": "Зеленый",
+                        "colorCode": "#004257,#37cdc4"
+                    },
+                },
+                "instock": "3",
+                "tradein": "00000",
+                "leasing": "000000",
+                "price": "0000000"
+            },
+
+        ];
+
+        // choosen car params
+
+        let choosenCarParams = {};
+
+        /*************************************************************************/
+
+        function drawFirstScreen() {
+            content = `
+					<div class="first_screen screen" data-screen="1">
+						<div class="container">
+							<div class="content">
+								<div class="title">
+                                    Получите выгоду на новый GAC<br>
+                                    до <span>000 000₽*</span> <b>до конца месяца!</b>
+								</div>
+								<div class="description">
+                                    Ответьте на 5 вопросов и получите<br> предложение от дилера GAC<br> среди авто в наличии
+								</div>
+								<div class="props">
+									<div class="ico1">
+										<span>Гарантия на автомобиль 5 лет<br> или 150 000 пробега</span>
+									</div>
+									<div class="ico2">
+										<span><b>000 000₽</b><br> кредит*</span>
+									</div>
+									<div class="ico3">
+										<span><b>000 000₽</b><br> trade-in*</span>
+									</div>
+								</div>
+								<div class="btn next">
+									<span>Начать подбор</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+
+            $(".quiz .screen").remove();
+            $(".quiz").append(content);
+
+            if ($(window).width() < 767) {
+                $(".bg_block_mob .screen_1").show();
+            } else {
+                $(".bg_block div").hide();
+                $(".bg_block .screen_1").show();
+            }
+
+            choosenCarParams = {};
+
+        }
+
+        function drawSecondScreen() {
+
+            choosenCarParams = {};
+
+            content = `
+					<div class="second_screen screen" data-screen="2">
+						<div class="container">
+							<div class="content">
+								<div class="title">
+									Выберите модель
+								</div>
+								<div class="params_wrapper">`;
+
+            content += `
+									<div class="models_list params_list">`;
+            carsInfoArr.forEach(car => {
+                content += `<div class="model car_param" data-param_name="model" data-value="${car["model"].toLowerCase().replaceAll(' ', '_')}"><font><span>${car["brand"]}</span> <i>${car["model"]}</i></font></div>`;
+            });
+            content += `		</div>
+									<div class="car_params_mob">
+										<select name="model">`;
+            carsInfoArr.forEach(car => {
+                content += `<option value="${car["model"].toLowerCase().replaceAll(' ', '_')}"><span>${car["brand"]}</span> ${car["model"]}</option>`;
+            });
+            content += `			</select>
+									</div>
+								</div>
+								<div class="btn next">
+									<span>Далее</span>
+								</div>
+								<div class="prev">
+									<span>К предыдущему вопросу</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+
+            $(".quiz .screen").remove();
+            $(".quiz").append(content);
+            if (choosenCarParams["model"]) {
+                $(".car_params_mob select[name='model']").val(choosenCarParams["model"]).change();
+            } else {
+                $(".car_params_mob select[name='model']").change();
+            }
+
+        }
+
+        function drawThirdScreen() {
+
+            content = `
+					<div class="third_screen screen" data-screen="3">
+						<div class="container">
+							<div class="content">
+								<div class="title">
+									Выберите коробку<br> передач
+								</div>
+								<div class="params_wrapper">`;
+
+            content += `
+									<div class="models_list params_list">`;
+
+            carsInfoArr.forEach(car => {
+                if (car["model"] == choosenCarParams["modelName"]) {
+                    for (const kpp in car["kpp"]) {
+                        content += `<div class="kpp car_param" data-param_name="kpp" data-value="${kpp}"><font>${car["kpp"][kpp]}</font></div>`;
+                    }
+                }
+            });
+
+            content += `<div class="kpp car_param" data-param_name="kpp" data-value="all"><font>Любая</font></div>`;
+
+            content += `		</div>
+									<div class="car_params_mob">
+										<select name="kpp">`;
+            carsInfoArr.forEach(car => {
+                if (car["model"] == choosenCarParams["modelName"]) {
+                    for (const kpp in car["kpp"]) {
+                        content += `<option value="${kpp}">${car["kpp"][kpp]}</option>`;
+                    }
+                }
+            });
+
+            content += `				<option value="all">Любая</option>
+										</select>
+									</div>
+								</div>
+								<div class="btn next">
+									<span>Далее</span>
+								</div>
+								<div class="prev">
+									<span>К предыдущему вопросу</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+
+            $(".quiz .screen").remove();
+            $(".quiz").append(content);
+            if (choosenCarParams["kpp"]) {
+                $(".car_params_mob select[name='kpp']").val(choosenCarParams["kpp"]).change();
+            } else {
+                $(".car_params_mob select[name='kpp']").change();
+            }
+
+            if ($(window).width() < 767) {
+                $(".bg_block_mob div").hide();
+                $(".bg_block_mob .screen_3").show();
+            } else {
+                $(".bg_block div").hide();
+                $(".bg_block .screen_3").show();
+            }
+
+        }
+
+        function drawFourthScreen() {
+
+            content = `
+					<div class="fourth_screen screen" data-screen="4">
+						<div class="container">
+							<div class="content">
+								<div class="title">
+									Выберите цвет авто
+								</div>
+								<div class="params_wrapper">`;
+
+            content += `
+									<div class="color_list params_list">`;
+
+            carsInfoArr.forEach(car => {
+                if (car["model"] == choosenCarParams["modelName"]) {
+                    for (const color in car["color"]) {
+                        content += `<div class="color car_param" data-param_name="color" data-value="${color}" data-color_code="${car["color"][color]["colorCode"]}"><font>${car["color"][color]["colorName"]}</font></div>`;
+                    }
+                }
+            });
+            content += `<div class="color car_param" data-param_name="color" data-value="all"><font>Еще не определился</font></div>`;
+
+            content += `		</div>
+									<div class="car_params_mob">
+										<select name="color">`;
+            carsInfoArr.forEach(car => {
+                if (car["model"] == choosenCarParams["modelName"]) {
+                    for (const color in car["color"]) {
+                        content += `<option value="${color}">${car["color"][color]["colorName"]}</option>`;
+                    }
+                }
+            });
+
+            content += `				<option value="all">Еще не определился</option>
+										</select>
+									</div>
+									<div class="car_color_img">
+										<picture>
+											<source loading="lazy" class="lazyload" data-srcset="./img/colors/${choosenCarParams["model"]}/1.webp" type="image/webp">
+											<img loading="lazy" class="lazyload" data-src="./img/colors/${choosenCarParams["model"]}/1.png" alt="">
+										</picture>
+									</div>
+								</div>
+								<div class="btn next">
+									<span>Далее</span>
+								</div>
+								<div class="prev">
+									<span>К предыдущему вопросу</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+
+            $(".quiz .screen").remove();
+            $(".quiz").append(content);
+            if (choosenCarParams["color"]) {
+                $(".car_params_mob select[name='color']").val(choosenCarParams["color"]).change();
+            } else {
+                $(".car_params_mob select[name='color']").change();
+            }
+
+            if ($(window).width() < 767) {
+                $(".bg_block_mob div").hide();
+                $(".bg_block_mob .screen_4").show();
+            } else {
+                $(".bg_block div").hide();
+                $(".bg_block .screen_4").show();
+            }
+
+        }
+
+        function drawFifthScreen() {
+            content = `
+					<div class="fifth_screen screen" data-screen="5">
+						<div class="container">
+							<div class="content">
+								<div class="title">
+									Планируте ли сдавать<br> свой автомобиль<br> в Trade-In
+								</div>
+								<div class="params_wrapper">
+									<div class="tradein_list params_list">
+										<div class="tradein car_param" data-param_name="tradein" data-value="yes"><font>Да</font></div>
+										<div class="tradein car_param" data-param_name="tradein" data-value="no"><font>Нет</font></div>
+										
+									</div>
+									<div class="car_params_mob">
+										<select name="tradein">
+											
+											<option value="yes">Да</option>
+											<option value="no">Нет</option>
+										</select>
+									</div>
+								</div>
+								<div class="btn next">
+									<span>Далее</span>
+								</div>
+								<div class="prev">
+									<span>К предыдущему вопросу</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+
+            $(".quiz .screen").remove();
+            $(".quiz").append(content);
+            if (choosenCarParams["tradein"]) {
+                $(".car_params_mob select[name='tradein']").val(choosenCarParams["tradein"]).change();
+            } else {
+                $(".car_params_mob select[name='tradein']").change();
+            }
+
+            if ($(window).width() < 767) {
+                $(".bg_block_mob div").hide();
+                $(".bg_block_mob .screen_5").show();
+            } else {
+                $(".bg_block div").hide();
+                $(".bg_block .screen_5").show();
+            }
+
+        }
+
+        function drawSixScreen() {
+            content = `
+					<div class="six_screen screen" data-screen="6">
+						<div class="container">
+							<div class="content">
+								<div class="title">
+									Выберите способ<br> покупки
+								</div>
+								<div class="params_wrapper">
+									<div class="way_list params_list">
+										<div class="way car_param" data-param_name="way" data-value="cash"><font>Внесу всю сумму сразу</font></div>
+										<div class="way car_param" data-param_name="way" data-value="credit"><font>Кредит</font></div>
+										<div class="way car_param" data-param_name="way" data-value="leasing"><font>Лизинг</font></div>
+										<div class="way car_param" data-param_name="way" data-value="any"><font>Рассмотрю варианты</font></div>
+										
+									</div>
+									<div class="car_params_mob">
+										<select name="way">
+											
+											<option value="cash">Внесу всю сумму сразу</option>
+											<option value="credit">Кредит</option>
+											<option value="leasing">Лизинг</option>
+											<option value="any">Рассмотрю варианты</option>
+										</select>
+									</div>
+								</div>
+								<div class="btn next">
+									<span>Далее</span>
+								</div>
+								<div class="prev">
+									<span>К предыдущему вопросу</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+
+            $(".quiz .screen").remove();
+            $(".quiz").append(content);
+            if (choosenCarParams["way"]) {
+                $(".car_params_mob select[name='way']").val(choosenCarParams["way"]).change();
+            } else {
+                $(".car_params_mob select[name='way']").change();
+            }
+
+            if ($(window).width() < 767) {
+                $(".bg_block_mob div").hide();
+                $(".bg_block_mob .screen_6").show();
+            } else {
+                $(".bg_block div").hide();
+                $(".bg_block .screen_6").show();
+            }
+
+        }
+
+        function drawSeventhScreen() {
+
+            let sumProfitTitle = "";
+            let sumProfit = 0;
+            let carPrice = 0;
+            let formComment = "";
+            let buyWay = choosenCarParams["way"];
+            let tradeinChoice = choosenCarParams["tradein"];
+
+            if (choosenCarParams["tradein_sum"]) {
+                sumProfit = sumProfit + +choosenCarParams["tradein_sum"];
+            }
+
+            if (choosenCarParams["credit_sum"]) {
+                sumProfit = sumProfit + +choosenCarParams["credit_sum"];
+            }
+
+            if (choosenCarParams["leasing_sum"]) {
+                sumProfit = sumProfit + +choosenCarParams["leasing_sum"];
+            }        
+            
+            sumProfitTitle = `
+                <div class="title">
+                    По заданным параметрам найден автомобиль<br>
+                    <div class="car_final_name">${choosenCarParams["brand"]} ${choosenCarParams["modelName"]}</div>`;
+            
+            if (choosenCarParams["price"]) {
+                carPrice = choosenCarParams["price"];
+                const formatPrice = new Intl.NumberFormat("ru").format(carPrice);
+                sumProfitTitle += ` от <div class="car_price">${formatPrice} ₽*</div>`;
+            }
+
+            sumProfitTitle += `</div>`;
+
+            if (sumProfit) {
+
+                const formatProfit = new Intl.NumberFormat("ru").format(sumProfit);
+                
+                sumProfitTitle += `
+                    <div class="title">
+                        Ваша персональная выгода до <div class="car_profit">${formatProfit} ₽*</div>
+                    </div>
+                `;                
+            }
+                
+            formComment = `
+                Пожалуйста, укажите номер Вашего телефона, и мы расскажем как получить максимальную выгоду при покупке
+            `;
+
+            content = `
+					<div class="seventh_screen screen" data-screen="7">
+						<div class="container">
+							<div class="content">								
+								${sumProfitTitle}
+								<div class="description">
+									${formComment}
+								</div>
+								<form action="" method="POST" class="all_forms">
+									<input type="text" name="checkpass" value="" style="position: absolute; left: -9999px; display: none;">
+									<input name="title" type="hidden" value="Выбор авто по параметрам">
+
+									<div class="form-group_wrapper">
+										<!--<div class="form-group">
+											<input type="text" name="name" inputmode="numeric" class="nacc form-control" placeholder="Ваше имя"data-flash="phone" autocomplete="off">
+										</div>-->
+										<div class="form-group">
+											<input type="tel" name="phone" inputmode="numeric" class="nacc form-control" placeholder="Ваш номер телефона"data-flash="phone" autocomplete="off">
+										</div>
+										<div class="form-group">
+											<button type="submit" class="form-control btn"><span>Получить предложение</span></button>
+										</div>
+									</div>
+									<label class="agree_field"><input type="checkbox" name="agree" value="1" checked="checked"><a target="_blank" href="">Согласие</a> на обработку персональных данных</label>
+								</form>
+								<div class="props">
+									<div class="ico1">
+										<span>Самый большой склад<br> автомобилей в городе</span>
+									</div>
+									<div class="ico2">
+										<span>Честные цены</span>
+									</div>
+									<div class="ico3">
+										<span>Сделка<br> день в день</span>
+									</div>
+									<div class="ico4">
+										<span>Гибкие условия<br> оплаты</span>
+									</div>
+									<div class="ico5">
+										<span>Выгодный<br> Trade-in</span>
+									</div>
+									<div class="ico6">
+										<span>Выгодный кредит.<br> Быстрое одобрение</span>
+									</div>
+								</div>								
+                            </div>
+                        </div>
+                    </div>
+                `;							
+
+            $(".quiz .screen").remove();
+            $(".quiz").append(content);
+
+            if ($(window).width() < 767) {
+                $(".bg_block_mob div").hide();
+                $(".bg_block_mob .screen_7").show();
+            } else {
+                $(".bg_block div").hide();
+                $(".bg_block .screen_7").show();
+            }
+
+            modeInputMask();
+
+            if (choosenCarParams["model"]) $(".screen form input[name='model']").val(choosenCarParams["modelName"]);
+            if (choosenCarParams["kpp"]) $(".screen form input[name='kpp']").val(choosenCarParams["kppName"]);
+            if (choosenCarParams["color"]) $(".screen form input[name='color']").val(choosenCarParams["colorName"]);
+            if (choosenCarParams["tradein"]) $(".screen form input[name='tradein']").val(choosenCarParams["tradeinName"]);
+            if (choosenCarParams["way"]) $(".screen form input[name='way']").val(choosenCarParams["wayName"]);
+
+        }
+
+
+        /************************************************************************************/
+
+        // choose car param
+        $(document).delegate(".car_param", "click", function () {
+            let parent = $(this).closest(".screen");
+            let paramURL = $(this).data("param_name");
+            let paramVal = $(this).data("value");
+            let paramName = paramURL + "Name";
+
+            choosenCarParams[paramName] = $(this).text();
+            choosenCarParams[paramURL] = paramVal;
+
+            // change car bg
+            if ($(this).hasClass("model")) {
+                choosenCarParams["brand"] = $("span", this).text();
+                choosenCarParams[paramName] = $("i", this).text();
+                if ($(window).width() < 767) {
+                    $(".bg_block_mob div").hide();
+                    $(".bg_block_mob .screen_2." + paramVal).show();
+                } else {
+                    $(".bg_block div").hide();
+                    $(".bg_block .screen_2." + paramVal).show();
+                }
+
+                // choose price
+                if (choosenCarParams["price"]) {
+                    delete choosenCarParams["price"];
+                }
+                carsInfoArr.forEach(car => {
+                    if (car["model"] == choosenCarParams["modelName"]) {
+                        if (car["price"]) {
+                            choosenCarParams["price"] = car["price"];
+                        }
+                    }
+                });
+
+                // choose car_count
+                if (choosenCarParams["car_count"]) {
+                    delete choosenCarParams["car_count"];
+                }
+                carsInfoArr.forEach(car => {
+                    if (car["model"] == choosenCarParams["modelName"]) {
+                        if (car["instock"]) {
+                            choosenCarParams["car_count"] = car["instock"];
+                        }
+                    }
+                });
+            }
+
+            // change car color
+            if ($(this).hasClass("color")) {
+
+                let colorCodeArr = "";
+
+                if ($(this).data("color_code")) {
+                    colorCodeArr = $(this).data("color_code").split(",");
+                } else {
+                    colorCodeArr = $(".car_param:eq(0)", parent).data("color_code").split(",");
+                }
+
+                if ($(window).width() < 767) {
+                    $(".bg_block_mob div").hide();
+                    $(".bg_block_mob .screen_4").show();
+                    $(".bg_block_mob .screen_4").css({"background": "linear-gradient(135deg, " + colorCodeArr[0] + " 0%, " + colorCodeArr[0] + " 30%, " + colorCodeArr[1] + " 100%)"});
+                } else {
+                    $(".bg_block div").hide();
+                    $(".bg_block .screen_4").show();
+                    $(".bg_block .screen_4").css({"background": "linear-gradient(135deg, " + colorCodeArr[0] + " 0%, " + colorCodeArr[0] + " 30%, " + colorCodeArr[1] + " 100%)"});
+                }
+
+                $(".car_color_img img").attr("src", "./img/colors/" + choosenCarParams["model"] + "/" + paramVal + ".png");
+                $(".car_color_img source").attr("srcset", "./img/colors/" + choosenCarParams["model"] + "/" + paramVal + ".webp");
+
+                if (paramVal == "all") {
+
+                    $(".car_color_img img").attr("src", "./img/colors/" + choosenCarParams["model"] + "/1.png");
+                    $(".car_color_img source").attr("srcset", "./img/colors/" + choosenCarParams["model"] + "/1.webp");
+                }
+            }
+
+            // choose tradein
+            if ($(this).hasClass("tradein")) {
+                if (choosenCarParams["tradein_sum"]) {
+                    delete choosenCarParams["tradein_sum"];
+                }
+                if (choosenCarParams["tradein"] == "yes") {
+                    carsInfoArr.forEach(car => {
+                        if (car["model"] == choosenCarParams["modelName"]) {
+                            if (car["tradein"]) {
+                                choosenCarParams["tradein_sum"] = car["tradein"];
+                            }
+                        }
+                    });
+                }
+            }
+
+            // choose credit
+            if ($(this).hasClass("way")) {
+                if (choosenCarParams["credit_sum"]) {
+                    delete choosenCarParams["credit_sum"];
+                }
+                if (choosenCarParams["way"] == "credit") {
+                    carsInfoArr.forEach(car => {
+                        if (car["model"] == choosenCarParams["modelName"]) {
+                            if (car["credit"]) {
+                                choosenCarParams["credit_sum"] = car["credit"];
+                            }
+                        }
+                    });
+                }
+            }
+
+            // choose credit
+            if ($(this).hasClass("way")) {
+                if (choosenCarParams["leasing_sum"]) {
+                    delete choosenCarParams["leasing_sum"];
+                }
+                if (choosenCarParams["way"] == "leasing") {
+                    carsInfoArr.forEach(car => {
+                        if (car["model"] == choosenCarParams["modelName"]) {
+                            if (car["leasing"]) {
+                                choosenCarParams["leasing_sum"] = car["leasing"];
+                            }
+                        }
+                    });
+                }
+            }
+
+            $(".car_param", parent).removeClass("active");
+            $(this).addClass("active");
+
+            console.log(choosenCarParams);
+        });
+
+
+        $(document).delegate("select", "change", function () {
+            let parent = $(this).closest(".params_wrapper");
+            let paramVal = $(this).val();
+
+            $(".car_param[data-value='" + paramVal + "']", parent).click();
+        });
+        // }
+
+        // next or prev button press
+        $(document).delegate(".quiz .next", "click", function () {
+            let screenId = $(this).closest(".screen").data("screen");
+            let screenIdNext = screenId + 1;
+
+            $(".quiz .screen").remove();
+            drawScreenByPrevNext(screenIdNext);
+        });
+
+        $(document).delegate(".quiz .prev", "click", function () {
+            let screenId = $(this).closest(".screen").data("screen");
+            let screenIdPrev = screenId - 1;
+
+            $(".quiz .screen").remove();
+            drawScreenByPrevNext(screenIdPrev);
+        });
+
+        function drawScreenByPrevNext(screenId) {
+
+            switch (screenId.toString()) {
+                case "1":
+                    drawFirstScreen();
+                    break;
+                case "2":
+                    drawSecondScreen();
+                    break;
+                case "3":
+                    drawThirdScreen();
+                    break;
+                case "4":
+                    drawFourthScreen();
+                    $("body").addClass("color");
+                    break;
+                case "5":
+                    drawFifthScreen();
+                    break;
+                case "6":
+                    drawSixScreen();
+                    break;
+                case "7":
+                    drawSeventhScreen();
+                    break;
+            }
+
+            setTimeout(() => {
+                $(".quiz .screen").addClass("anim");
+            }, 100);
+
+        }
+
+        drawFirstScreen();
+        setTimeout(() => {
+            $(".quiz .screen").addClass("anim");
+        }, 100);
+
+        // $(document).delegate(".quiz .screen .next", "click", function () {
+
+        //     let screen = $(this).closest(".screen");
+
+        //     switch (true) {
+        //         case $(screen).hasClass("first_screen"):
+        //             sendGoal("start");
+        //             break;
+        //         case $(screen).hasClass("second_screen"):
+        //             sendGoal("q1");
+        //             break;
+        //         case $(screen).hasClass("third_screen"):
+        //             sendGoal("q2");
+        //             break;
+        //         case $(screen).hasClass("fourth_screen"):
+        //             sendGoal("q3");
+        //             break;
+        //         case $(screen).hasClass("fifth_screen"):
+        //             sendGoal("q4");
+        //             break;
+        //         case $(screen).hasClass("six_screen"):
+        //             sendGoal("q5");
+        //             break;
+        //     }
+        // });
+
+    });
+</script>
+
+<section class="quiz"></section>
+
+<div class="bg_block">
+    <div class="screen_1"></div>
+    <div class="screen_2 gs5"></div>
+    <div class="screen_2 gs8_ii"></div>
+    <div class="screen_3"></div>
+    <div class="screen_4"></div>
+    <div class="screen_5"></div>
+    <div class="screen_6"></div>
+    <div class="screen_7"></div>
+</div>
+<div class="bg_block_mob">
+    <div class="screen_1"></div>
+    <div class="screen_2 gs5"></div>
+    <div class="screen_2 gs8_ii"></div>
+    <div class="screen_3"></div>
+    <div class="screen_4"></div>
+    <div class="screen_5"></div>
+    <div class="screen_6"></div>
+    <div class="screen_7"></div>
+</div>
+
+<div id="form_popup">
+    <form action="" method="POST" class="all_forms popup_container">
+        <input type="text" name="checkpass" value="" style="position: absolute; left: -9999px; display: none;">
+        <input name="title" type="hidden" value="">
+
+        <h2 class="form_title">Заголовок</h2>
+        <div class="form-group">
+            <input type="tel" name="phone" inputmode="numeric" class="nacc form-control"
+                   placeholder="Ваш номер телефона" data-flash="phone" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="form-control btn" autofocus><span>Получить предложение</span></button>
+        </div>
+        <label class="agree_field"><input type="checkbox" name="agree" value="1" checked="checked"><a target="_blank" href="">Согласие</a> на обработку персональных данных</label>
+    </form>
+</div>
+
+
+<link href="./css/fonts.css" rel="stylesheet">
+
+<!-- fancy -->
+<script type="text/javascript" src="./js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="./js/jquery.inputmask.bundle.min.js"></script>
+
+<!-- slick -->
+<link rel="stylesheet" type="text/css" href="./slick/slick.css"/>
+<script type="text/javascript" src="./slick/slick.min.js"></script>
+
+<script type="text/javascript" src="./js/index.js"></script>
+
+<script>
+    $(function () {
+        if ('loading' in HTMLImageElement.prototype) {
+
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.src = img.dataset.src;
+            });
+
+            const sources = document.querySelectorAll('source[loading="lazy"]');
+            sources.forEach(source => {
+                source.srcset = source.dataset.srcset;
+            });
+
+        } else {
+            // Dynamically import the LazySizes library
+            const script = document.createElement('script');
+            script.src =
+                './js/lazysizes.min.js';
+            document.body.appendChild(script);
+        }
+    });
+</script>
+
+</body>
+</html>

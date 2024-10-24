@@ -1,0 +1,1138 @@
+body {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 16px;
+    color: black;
+    position: relative;
+    font-weight: 400;
+    padding: 0px;
+    overflow-x: hidden;
+    max-width: 1920px;
+    margin: 0 auto;
+    height: 100vh;
+    height: 1080px !important;
+}
+
+.compensate-for-scrollbar {
+    margin: 0 auto !important;
+    overflow: auto !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+input[type=file] {display:none;}
+
+.resp_table{width:100%;}
+.resp_table tr td:before{display:none;}
+.resp_table img {
+    max-width: unset;
+    width: unset;
+    display: block;
+    width: 100%;
+}
+
+img {
+    border-style: none;
+    vertical-align: middle;
+    max-width:100%;
+    transition: 0.5s;
+}
+
+select::-ms-expand{
+    display: none;
+}
+
+select {
+	appearance:none;
+	-moz-appearance:none; /* Firefox */
+	-webkit-appearance:none; /* Safari and Chrome */
+	background: url(../img/ico_select.png) 100% 50% no-repeat;
+	font-family: "Montserrat", Arial, sans-serif;
+	outline: none;
+}
+
+a {text-decoration:none;}
+
+.container {
+    margin: 0px auto;
+    padding: 0px 15px;
+    max-width: 1200px;
+    position: relative;
+}
+
+@media (min-width: 576px) {
+  .container {
+    width: 540px;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 720px;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 960px;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1140px;
+    max-width: 100%;
+  }
+}
+
+
+input[type=text],
+input[type=tel]
+{
+	color:#000;
+}
+
+.has-danger input,
+.has-danger select,
+.has-danger textarea
+{
+	border-width:2px;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #eba5a3;
+}
+
+#form_popup { display:none; }
+
+.popup_container {width: 520px;max-width:100%;padding: 5px 29px;overflow: hidden !important;position: relative;box-sizing: border-box;background: white;text-align: center;padding-bottom: 30px;}
+
+.popup_container .agree_field {color: black;font-size: 12px;}
+.popup_container .agree_field a {color: black;}
+
+.popup_container h2
+{
+	font-size: 24px;
+	font-weight: 700;
+	padding: 0px;
+	margin: 0px;
+	padding-bottom: 29px;
+	text-align: center;
+	padding-top: 25px;
+	color: black;
+}
+
+.popup_container .form_comment {
+    text-align: center;
+    font-size: 20px;
+    color: #414141;
+    padding-bottom:  15px;
+}
+.popup_container .form_comment a {
+    display: block;
+    color: #414141;
+    text-decoration: none;
+}
+
+.popup_container .form-group {
+    margin-bottom: 19px;
+}
+.popup_container .form-group input[type=text],
+.popup_container .form-group input[type=tel] {
+    color: #000;
+    display: block;
+    height: 50px;
+    line-height: 100%;
+    text-decoration: none;
+    text-align: left;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    background: white;
+    border: 2px solid #000;
+    padding: 10px;
+}
+
+.popup_container .form-group ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #000;
+  }
+.popup_container .form-group ::-moz-placeholder { /* Firefox 19+ */
+    color: #000;
+  }
+.popup_container .form-group :-ms-input-placeholder { /* IE 10+ */
+    color: #000;
+  }
+.popup_container .form-group :-moz-placeholder { /* Firefox 18- */
+    color: #000;
+  }
+
+.popup_container .form-group textarea {
+    color: black;
+    display: block;
+    height: 100px;
+    text-decoration: none;
+    text-align: left;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    background: none;
+    border: 1px solid #c0c6c9;
+    padding: 10px;
+    resize: none;
+    font-size: 16px;
+}
+
+.popup_container .form-group select {
+    color: #000;
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 300;
+    padding-left: 10px;
+    height: 38px;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid #000;
+}
+
+.popup_container .form-group button {cursor: pointer;height: 38px;font-size: 16px;font-weight: 400;height: 60px;}
+
+
+.alert.fancybox-content {
+    overflow: hidden;
+}
+
+.not_agree button {
+    background-color: #cccccc !important;
+    cursor: auto !important;
+    color: white !important;
+    }
+
+.agree_field {
+    font-size: 14px;
+    line-height: 100%;
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    top: 0px;
+    font-weight: 300;
+}
+.agree_field a {
+    color: black;
+    text-decoration: underline;
+}
+.agree_field input {
+    position: absolute;
+    top: -1px;
+    left: 0px;
+    margin: -0px;
+}
+.agree_field span {
+    padding-left: 25px;
+    display: inline-block;
+}
+
+.popup_container .form-disclamer {
+    color: #b8b8b8;
+    font-size: 10px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+form .form-group {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+form .form-group input[type="text"],
+form .form-group input[type="tel"] {
+    height: 50px;
+    width: 100%;
+    color: #000;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-weight: 300;
+    text-align: left;
+    border: 1px solid #000;
+    padding: 0px 20px;
+    outline: none;
+    background: transparent;
+    font-family: "Montserrat", Arial, sans-serif;
+}
+
+select {
+    display: block;
+    color: #000;
+    height: 50px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 35px;
+    font-size: 16px;
+    font-weight: 300;
+    outline: none;
+    background: url(../img/ico_select.png) right 20px center no-repeat;
+    border: 1px solid #000;
+    font-family: "Montserrat", Arial, sans-serif;
+}
+
+form .form-group button {
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    outline: none;
+    font-family: "Montserrat", Arial, sans-serif;
+}
+
+form ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #000;
+  }
+form ::-moz-placeholder { /* Firefox 19+ */
+    color: #000;
+  }
+form :-ms-input-placeholder { /* IE 10+ */
+    color: #000;
+  }
+form :-moz-placeholder { /* Firefox 18- */
+    color: #000;
+  }
+
+.form_title {color: black;font-size: 36px;padding: 0px;margin: 0px;text-align: center;padding-bottom: 47px;}
+
+.form_title span {
+    display: block;
+    white-space: nowrap;
+}
+
+
+.btn {
+    background: #d7000f;
+    color: white;
+    text-align: center;
+    height: 50px;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    border: 1px solid #d7000f;
+    position: relative;
+    text-decoration: none;
+    transition:  all .2s linear;
+}
+
+.btn span {
+    display:inline-block;
+    width: 100%;
+}
+
+.btn:hover {
+    background: #000;
+    border: 1px solid #000;    
+    color: #fff;
+}
+
+
+
+
+/*************************************************************************************************************************/
+
+
+
+
+header {
+    padding: 25px 0;
+    border-bottom: 1px solid #ffffff;
+    color: #fff;
+    font-size: 14px;
+}
+header .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .logo_wrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .logo_text {
+    padding-left: 55px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+}
+header .logo_text .text {
+    padding-bottom: 3px;
+}
+header .header_phone {
+    color: #fff;
+}
+
+
+
+/**************************************************************************************************************/
+
+
+.quiz {
+    height: calc(100% - 101px);
+}
+.quiz .screen {
+    height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+.quiz .screen:before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 50%;
+    top: 0;
+    left: -20%;
+    opacity: 0;
+    transition: all .2s linear;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 5px 5px 10px 5px rgba(0,0,0,.1);
+    z-index: -1;
+}
+
+.quiz .screen.anim:before {
+    left: 0;
+    opacity: 1;
+}
+
+@supports not (backdrop-filter: blur()) {
+    .quiz .screen:before {
+        background: rgba(255,255,255,.25);
+    }
+}
+
+.quiz .screen .content {max-width: 885px;}
+.quiz .screen .title {
+    font-size: 36px;
+    padding-bottom: 35px;
+    transition: all .3s linear;
+    position: relative;
+    font-weight: 700;
+}
+
+.quiz .screen .title .car_final_name {
+    font-size: 50px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.quiz .screen .title .car_count {
+    display: inline-block;
+}
+
+.quiz .screen .title .car_profit {
+    display: inline-block;
+    color: #d7000f;
+    font-size: 50px;
+}
+
+.quiz .screen .title .car_price {
+    display: inline-block;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.quiz .screen .props div {
+    width: 49%;
+    background: rgba(255,255,255,.2);
+    border: 1px solid #ecedee;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    height: 130px;
+    padding-left: 30px;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: all .2s linear;
+}
+
+.quiz .screen .props div:hover {
+    box-shadow: 4px 4px 7px 3px rgb(0 0 0 / 25%);
+}
+
+.quiz .screen .props {
+    margin-top: 70px;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.quiz .screen .btn {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.quiz .screen .next {
+    position: relative;
+    transition: all .2s linear;
+}
+.quiz .screen .prev {
+    display: block;
+    padding-left: 30px;
+    background: url(../img/back_arrow.png) 0 50% no-repeat;
+    margin: 0 auto;
+    margin-left: 90px;
+    margin-top: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.quiz .screen.anim .next,
+.quiz .screen.anim .prev {
+    left: 0;
+    opacity: 1;
+}
+
+.quiz .screen .prev:hover {
+    text-shadow: .5px 0 0 #000, 0 .5px 0 #000;
+}
+
+.quiz .screen .params_wrapper {
+    margin-top: 15px;
+}
+.quiz .screen .car_params_mob {
+    display: none;
+}
+.quiz .screen .car_params_mob select span {text-transform: uppercase;}
+
+.quiz .screen .car_color_img {
+    position: absolute;
+    right: -50px;
+    top: calc(50% - 150px);
+}
+
+.quiz .screen .params_list {
+    width: 100%;
+    max-width: 420px;
+}
+.quiz .screen .params_list .car_param {
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #000;
+    padding-left: 70px;
+    font-size: 20px;
+    background: rgba(255,255,255,.1);
+    cursor: pointer;
+    position: relative;
+    left: -50%;
+    opacity: 0;
+}
+
+.quiz .screen .params_list .car_param:nth-child(1) {transition: all .2s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(2) {transition: all .23s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(3) {transition: all .26s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(4) {transition: all .29s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(5) {transition: all .32s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(6) {transition: all .35s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(7) {transition: all .38s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(8) {transition: all .41s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(9) {transition: all .44s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(10) {transition: all .47s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(11) {transition: all .50s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(12) {transition: all .53s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(13) {transition: all .56s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(14) {transition: all .59s linear, box-shadow .2s linear;}
+.quiz .screen .params_list .car_param:nth-child(15) {transition: all .62s linear, box-shadow .2s linear;}
+
+.quiz .screen.anim .params_list .car_param {
+    left: 0;
+    opacity: 1;
+}
+
+.quiz .screen .params_list .car_param:before {content: "";display: block;width: 6px;height: 6px;background: #000;border-radius: 50%;box-shadow: 0 0 0 2px #000;position: absolute;top: calc(50% - 3px);left: 32px;}
+
+.quiz .screen .params_list .car_param.active:before {
+    background: transparent;
+    box-shadow: 0 0 0 7px #000;
+    width: 8px;height: 8px;
+}
+
+.quiz .screen .params_list .car_param:hover {
+    box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.15);
+}
+
+.quiz .screen .params_list .car_param:after {content: "";}
+.quiz .screen .params_list .car_param span {
+    text-transform: uppercase;
+}
+
+.quiz .screen .params_list .car_param i {
+    font-style: normal;
+}
+
+.quiz .screen.first_screen .title {
+    color: #fff;
+    line-height: 60px;
+    font-weight: 400;
+}
+.quiz .screen.first_screen .title span {color: #d7000f;font-weight: 700;}
+.quiz .screen.first_screen .description {
+    font-size: 24px;
+    color: #fff;
+    line-height: 32px;
+    margin-top: 40px;
+}
+.quiz .screen.first_screen .props div.ico1 {
+    width: 100%;
+    background: url(../img/first_screen_ico1.png) 97% 20px no-repeat rgba(255,255,255,.2);
+}
+.quiz .screen.first_screen .props div.ico2 {
+    background: url(../img/first_screen_ico2.png?v=3) 100% 0px no-repeat rgba(255,255,255,.2);
+}
+.quiz .screen.first_screen .props div.ico3 {
+    background: url(../img/first_screen_ico3.png) 112% 20px no-repeat rgba(255,255,255,.2);
+}
+
+.quiz .screen.first_screen:before {display: none;}
+.quiz .screen.seventh_screen:before {display: none;}
+.quiz .screen.seventh_screen .title {
+    padding-bottom: 20px;
+    font-weight: 400;
+}
+.quiz .screen.seventh_screen .description {
+    font-size: 20px;
+}
+.quiz .screen.seventh_screen form {
+    width: 100%;
+    margin-top: 35px;
+}
+.quiz .screen.seventh_screen form .form-group_wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.quiz .screen.seventh_screen form .form-group {
+    width: 49%;
+}
+
+.quiz .screen.seventh_screen form .form-group .btn {
+    margin-top: 0;
+    background: #000;
+    border-color: #000;
+}
+.quiz .screen.seventh_screen form .form-group .btn:hover {
+    background: #d7000f;
+    border-color: #d7000f;
+}
+.quiz .screen.seventh_screen form .agree_field,
+.quiz .screen.seventh_screen .props div.ico1 {
+    background: url(../img/seventh_screen_ico1.png) 95% -15px no-repeat rgba(255,255,255,.2);
+}
+
+.quiz .screen.seventh_screen .props {
+    max-width: 100%;
+}
+
+.quiz .screen.seventh_screen .comp_info {
+    font-size: 12px;
+    margin-top: 30px;
+    padding-right: 30px;
+}
+
+.quiz .screen.seventh_screen .props div {
+    border-color: #000;
+    color: #000;
+    padding-left: 20px;
+}
+.quiz .screen.seventh_screen .props div.ico2 {
+    width: 23.5%;
+    background: url(../img/seventh_screen_ico2.png) 110% 38px no-repeat rgba(255,255,255,.2);
+}
+.quiz .screen.seventh_screen .props div.ico3 {
+    width: 23.5%;
+    background: url(../img/seventh_screen_ico3.png) 109% 13px no-repeat rgba(255,255,255,.2);
+}
+.quiz .screen.seventh_screen .props div.ico4 {
+    width: 23.5%;
+    background: url(../img/seventh_screen_ico4.png?v=3) 127% 9px no-repeat rgba(255,255,255,.2);
+}
+.quiz .screen.seventh_screen .props div.ico5 {
+    width: 23.5%;
+    background: url(../img/seventh_screen_ico5.png?v=2) 120% -1px no-repeat rgba(255,255,255,.2);
+}
+.quiz .screen.seventh_screen .props div.ico6 {
+    background: url(../img/seventh_screen_ico6.png) 93% -18px no-repeat rgba(255,255,255,.2);
+}
+
+/**************************************************************************************************************/
+
+
+.bg_block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -1;
+}
+.bg_block_mob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -1;
+    background: none;
+    display: none;
+}
+
+.bg_block div,
+.bg_block_mob div {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.bg_block .screen_1 {background: url(../img/first_screen_bg.jpg) 50% 0 no-repeat;}
+.bg_block .screen_2.gs5 {background: url(../img/cars_screen_bg/gs5.jpg) 50% 50% no-repeat;}
+.bg_block .screen_2.gs8_ii {background: url(../img/cars_screen_bg/gs8_ii.jpg) 50% 50% no-repeat;}
+.bg_block .screen_3 {background: url(../img/third_screen_bg.jpg) 50% 0 no-repeat;}
+.bg_block .screen_4 {background: linear-gradient(135deg, #696969 0%, #696969 30%, #ffffff 100%);}
+
+.bg_block .screen_4:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../img/fourth_screen_bg.png) 50% 0 no-repeat;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.bg_block .screen_5 {background: url(../img/fifth_screen_bg.jpg?v=2) 50% 0 no-repeat;}
+.bg_block .screen_6 {background: url(../img/six_screen_bg.jpg) 50% 0 no-repeat;}
+.bg_block .screen_7 {background: url(../img/seventh_screen_bg.jpg) 50% 0 no-repeat;}
+
+.bg_block_mob .screen_1 {background: url(../img/first_screen_bg_mob.jpg) 50% 0 no-repeat;}
+.bg_block_mob .screen_2.gs5 {background: url(../img/cars_screen_bg/gs5_mob.jpg) 50% 0 no-repeat;}
+.bg_block_mob .screen_2.gs8_ii {background: url(../img/cars_screen_bg/gs8_ii_mob.jpg) 50% 0 no-repeat;}
+.bg_block_mob .screen_3 {background: url(../img/third_screen_bg_mob.jpg) 50% 0 no-repeat;}
+.bg_block_mob .screen_4 {background: linear-gradient(135deg, #696969 0%, #696969 30%, #ffffff 100%);}
+
+.bg_block_mob .screen_4:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../img/fourth_screen_bg_mob.png) 50% 0 no-repeat;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.bg_block_mob .screen_5 {background: url(../img/fifth_screen_bg_mob.jpg?v=2) 50% 0 no-repeat;}
+.bg_block_mob .screen_6 {background: url(../img/six_screen_bg_mob.jpg) 50% 0 no-repeat;}
+.bg_block_mob .screen_7 {background: url(../img/fourth_screen_bg_mob.png) 50% 0 no-repeat, linear-gradient(135deg, #696969 0%, #696969 30%, #ffffff 100%);}
+
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+
+@media (max-width: 1900px) {
+}
+@media (max-width: 1800px) {
+    .bg_block .screen_1 {
+        background: url(../img/first_screen_bg.jpg) 50% 70% no-repeat;
+    }
+    .quiz .screen .props {
+        margin-top: 30px;
+    }
+    .quiz .screen .props div {
+        height: 80px;
+    }
+
+.quiz .screen.first_screen .props div.ico1 {
+    background-size: 11%;
+}
+
+.quiz .screen.first_screen .props div.ico2 {
+    background-size: 60%;
+}
+    .quiz .screen.first_screen .props div.ico3 {
+        background-size: 50%;
+        background-position: 100% 50%;
+    }
+    .quiz .screen .title {
+        padding-bottom: 0px;
+    }
+
+    .quiz .screen.anim .params_list .car_param {
+        font-size: 16px;
+        padding-left: 50px;
+    }
+
+    .quiz .screen .params_list .car_param:before {
+        left: 22px;
+    }
+
+    .quiz .screen.seventh_screen .props div.ico2 {
+        background: url(../img/seventh_screen_ico2.png) 110% -16px no-repeat rgba(255,255,255,.2);
+    }
+    .quiz .screen.seventh_screen .props div.ico4 {
+        background: url(../img/seventh_screen_ico4.png?v=2) 127% 0px no-repeat rgba(255,255,255,.2);
+    }
+}
+@media (max-width: 1500px) {
+   
+}
+@media (max-width: 1280px) {
+
+}
+
+/*IPAD PRO BEGIN*/
+@media (min-width: 768px) and (max-width: 1199px){
+
+    /*************************************************************************************************************************/
+
+
+header .logo_wrap {
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+}
+
+
+
+/**************************************************************************************************************/
+
+
+.quiz .screen .title {
+    font-size: 24px;
+}
+.quiz .screen .car_color_img {
+    max-width: 50%;
+    right: 0;
+}
+
+
+/**************************************************************************************************************/
+    
+}
+/*IPAD PRO BEGIN*/
+
+/*IPAD BEGIN*/
+@media (min-width: 768px) and (max-width: 991px) {
+    
+    /*************************************************************************************************************************/
+
+
+header .logo_text {
+    padding-left: 15px;
+}
+
+
+
+/**************************************************************************************************************/
+
+
+.quiz .screen .content {
+    max-width: 305px;
+}
+
+.quiz .screen.first_screen .content {
+    max-width: 100%;
+}
+
+.quiz .screen.seventh_screen .content {
+    max-width: 100%;
+}
+
+.quiz .screen.anim .params_list .car_param {
+    width: 100%;
+}
+
+
+
+/**************************************************************************************************************/
+
+}
+
+	
+/*IPAD END*/
+
+/*MOBILE BEGIN*/
+@media (max-width: 767px) {
+	
+	.fancybox-type-image {width: 100% !important;margin: 0px !important;left: 0px !important;}
+	.fancybox-close {right: 9px !important;top: 9px !important;}
+	.fancybox-inner {width: 100% !important;margin: 0px !important;padding: 0px !important;}
+	.fancybox-wrap {margin:0px !important;width: 100% !important;left: 0px !important;top: 20px !important;}
+	.fancybox-type-image .fancybox-close {top: -8px !important;}
+
+	.simple_slider .btn_left {display:none !important;}
+	.simple_slider .btn_right {display:none !important;}
+	
+	.popup_container {width:100%;}
+
+    
+    /*************************************************************************************************************************/
+
+    body {
+        height: 100vh !important;
+        max-height: 100vh;
+    }
+
+    .btn:hover {
+        background: #000;
+        border: #000;    
+        color: #fff;
+    }
+
+header {
+    padding: 15px 0;
+    background: rgba(255,255,255,.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+header .header {
+    flex-wrap: wrap;
+}
+header .logo_wrap {
+    justify-content: space-between;
+}
+header .logo {
+    max-width: 43%;
+    padding-top: 5px;
+}
+header .logo_text {
+    padding: 0;
+    max-width: 43%;
+    color: #fff;
+}
+
+.btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+
+/**************************************************************************************************************/
+
+
+.quiz {
+    height: 100%;
+}
+
+.bg_block {
+    background: none;
+}
+.bg_block_mob {
+    display: block;
+}
+
+.bg_block_mob div {
+    background-size: auto 100% !important;
+    background-position: 50% 50% !important;
+}
+
+.quiz .screen {
+    display: block;
+    padding-top: 15px;
+    height: 100%;
+    padding-bottom: 40px;
+    background: rgba(255,255,255,.25);
+    z-index: 1;
+}
+.quiz .screen .container {
+    position: static;
+}
+
+.quiz .screen:before {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    background: none;
+}
+.quiz .screen.seventh_screen:before {display: block;height: 100%;}
+.quiz .screen .props {
+    margin-top: 50px;
+}
+.quiz .screen .props div {
+    height: 90px;
+    padding-left: 15px;
+}
+.quiz .screen .btn {max-width: 100%;}
+.quiz .screen .next {
+    opacity: 0;
+    transition: all .3s linear;
+}
+.quiz .screen.anim .next {
+    opacity: 1;
+}
+.quiz .screen .prev {
+    margin: 0 auto;
+    margin-top: 15px;
+    opacity: 0;
+    transition: all .2s linear;
+}
+.quiz .screen.anim .prev {
+    opacity: 1;
+}
+.quiz .screen .car_params_mob {
+    display: block;
+}
+
+.quiz .screen .car_params_mob select {
+    opacity: 0;
+    transition: all .4s linear;
+}
+
+.quiz .screen.anim .car_params_mob select {
+    opacity: 1;
+}
+
+.quiz .screen .car_color_img {
+    position: fixed;
+    margin-top: 20px;
+    width: 100%;
+    right: 0;
+    bottom: 20%;
+    top: unset;
+    padding: 15px;
+}
+.quiz .screen .params_list {
+    display: none;
+}
+
+.quiz .screen .title {
+    font-size: 20px !important;
+    line-height: 26px !important;
+    text-align: center !important;
+    opacity: 0 !important;
+    transition: all .5s linear !important;
+}
+.quiz .screen.anim .title {
+    opacity: 1 !important;
+}
+
+.quiz .screen .title .car_final_name {
+    font-size: 1.2em;
+}
+
+.quiz .screen .title .car_price {
+    font-size: 1.2em;
+}
+.quiz .screen.first_screen .title span {
+    font-size: 32px;
+}
+
+.quiz .screen .description {
+    font-size: 16px !important;
+    line-height: 22px !important;
+    margin-top: 15px !important;
+    text-align: center !important;
+}
+.quiz .screen.first_screen .props div.ico2 {
+    background: url(../img/first_screen_ico2.png) 123% 18px no-repeat rgba(255,255,255,.2);
+}
+.quiz .screen.first_screen .props div.ico3 {
+    background: url(../img/first_screen_ico3.png) 112% -2px no-repeat rgba(255,255,255,.2);
+}
+
+
+.quiz .screen .title .car_profit {
+    font-size: 1.2em;
+}
+.quiz .screen.seventh_screen form .form-group_wrapper {
+    flex-wrap: wrap;
+}
+.quiz .screen.seventh_screen form .form-group {
+    width: 100%;
+}
+.quiz .screen.seventh_screen form .agree_field,
+.quiz .screen.seventh_screen .props div.ico1 {
+    width: 100%;
+}
+.quiz .screen.seventh_screen .props div.ico2 {
+    width: 49%;
+    background-position: 105% 0;
+}
+.quiz .screen.seventh_screen .props div.ico3 {
+    width: 49%;
+}
+.quiz .screen.seventh_screen .props div.ico4 {
+    width: 49%;
+    background-position: 106% 114%;
+}
+.quiz .screen.seventh_screen .props div.ico5 {
+    width: 49%;
+}
+.quiz .screen.seventh_screen .props div.ico6 {
+    width: 100%;
+}
+
+/**************************************************************************************************************/
+
+
+
+}
+
+/*MOBILE END*/
+
+/* Portrait phones and smaller */
+@media (max-width: 388px)
+{    
+    .quiz .screen .car_color_img {
+        bottom: 10%;
+    }
+}
+
+@media (max-width: 378px)
+{
+    
+}
+
+@media (max-width: 360px)
+{
+    
+}
+
+@media (max-width: 320px)
+{	
+    .quiz .screen .car_color_img {
+        bottom: 0%;
+    }
+
+    .quiz .screen {
+        padding-bottom: 15px;
+    }
+}
