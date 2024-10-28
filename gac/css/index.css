@@ -959,7 +959,7 @@ header .logo_text {
 }
 
 .bg_block_mob div {
-    background-size: auto 100% !important;
+    background-size: cover !important;
     background-position: 50% 50% !important;
 }
 
